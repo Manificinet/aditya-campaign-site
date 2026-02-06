@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Er. Aditya Acharya | Candidate for House of Representatives</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Mukta:wght@300;400;600;700;800&display=swap');
+        
+        :root {
+            --party-red: #dc2626;
+            --party-blue: #1e3a8a;
+            --party-blue-dark: #172554;
+        }
+
+        body {
+            font-family: 'Inter', 'Mukta', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(23, 37, 84, 0.95) 0%, rgba(185, 28, 28, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1540910419391-7094f7494a36?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .party-pattern {
+            background-image: radial-gradient(var(--party-red) 0.5px, transparent 0.5px), radial-gradient(var(--party-blue) 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            opacity: 0.05;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            border-color: var(--party-red);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nepal-accent {
+            border-left: 4px solid var(--party-red);
+        }
+
+        .flag-stripe-bottom {
+            height: 8px;
+            background: linear-gradient(90deg, var(--party-blue) 50%, var(--party-red) 50%);
+        }
+
+        /* Language Toggle Styling */
+        .lang-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            background: white;
+            padding: 4px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            display: flex;
+            border: 2px solid var(--party-blue);
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .lang-btn.active {
+            background: var(--party-blue);
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-slate-900">
+
+    <!-- Language Toggle Button -->
+    <div class="lang-toggle">
+        <div id="btn-en" class="lang-btn active" onclick="setLanguage('en')">EN</div>
+        <div id="btn-ne" class="lang-btn" onclick="setLanguage('ne')">नेपाली</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-md border-b-2 border-blue-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center gap-4">
+                    <img src="7.jpeg" alt="Party Logo" onerror="this.src='https://via.placeholder.com/50x50?text=Logo'" class="h-12 w-12 object-contain rounded-full border border-gray-200 shadow-sm">
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-black text-blue-900 tracking-tight leading-none italic uppercase">ER. ADITYA ACHARYA</span>
+                        <div class="flex items-center mt-1">
+                            <span class="h-2 w-2 bg-red-600 rounded-full mr-2"></span>
+                            <span class="text-xs font-bold text-red-600 uppercase tracking-widest" 
+                                  data-en="Rastria Nirmand Daal Nepal" 
+                                  data-ne="राष्ट्रिय निर्माण दल नेपाल">Rastria Nirmand Daal Nepal</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-wide items-center">
+                    <a href="#about" class="text-blue-900 hover:text-red-600 transition" data-en="About" data-ne="हाम्रो बारेमा">About</a>
+                    <a href="#contribution" class="text-blue-900 hover:text-red-600 transition" data-en="Work" data-ne="कार्यहरू">Work</a>
+                    <a href="#priorities" class="text-blue-900 hover:text-red-600 transition" data-en="Priorities" data-ne="प्राथमिकताहरू">Priorities</a>
+                    <a href="#volunteer" class="bg-blue-900 text-white px-6 py-2 rounded-full hover:bg-red-600 transition shadow-lg" data-en="Join Movement" data-ne="अभियानमा जोडिनुहोस्">Join Movement</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient min-h-screen flex items-center pt-20 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="space-y-6">
+                <div class="inline-flex items-center px-4 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-sm font-bold uppercase tracking-widest">
+                    <span class="w-2 h-2 bg-red-500 rounded-full mr-2 animate-pulse"></span>
+                    <span data-en="Sunsari Kshetra No. 2" data-ne="सुनसरी क्षेत्र नं. २">Sunsari Kshetra No. 2</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight">
+                    <span data-en="Voice of the People." data-ne="जनताको आवाज,">Voice of the People.</span><br>
+                    <span class="text-red-500" data-en="Commitment to Development." data-ne="विकासको प्रतिबद्धता।">Commitment to Development.</span>
+                </h1>
+                <p class="text-xl text-slate-200 max-w-lg font-light leading-relaxed">
+                    <span data-en="Honest leadership by Er. Aditya Acharya for a self-reliant Nepal. Candidate for House of Representatives." 
+                          data-ne="आत्मनिर्भर नेपालका लागि इ. आदित्य आचार्यको इमान्दार नेतृत्व। प्रतिनिधि सभा सदस्यका उम्मेदवार।">Honest leadership by Er. Aditya Acharya for a self-reliant Nepal. Candidate for House of Representatives.</span>
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="#volunteer" class="bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-xl font-bold shadow-2xl flex items-center justify-center text-center transition-transform hover:scale-105" data-en="Join the Movement" data-ne="अभियानमा सामेल हुनुहोस्">
+                        Join the Movement
+                    </a>
+                    <a href="#contact" class="bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 text-white px-10 py-4 rounded-xl font-bold transition flex items-center justify-center text-center" data-en="Connect with Er. Aditya" data-ne="इ. आदित्यसँग जोडिनुहोस्">
+                        Connect with Er. Aditya
+                    </a>
+                </div>
+            </div>
+            <div class="relative hidden md:block">
+                <div class="w-full h-[600px] bg-blue-950 rounded-3xl overflow-hidden border-8 border-white/10 relative shadow-2xl group">
+                    <div id="hero-image" class="absolute inset-0 bg-cover bg-center transition duration-500 group-hover:scale-105" style="background-image: url('4.jpg');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-blue-950/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8">
+                        <div class="bg-red-600/90 backdrop-blur-md p-6 rounded-2xl border border-white/20 shadow-xl">
+                            <p class="text-lg font-bold" data-en='"From Engineering Solutions to Engineering Change."' data-ne='"प्राविधिक समाधानबाट प्रशासनिक परिवर्तनसम्म।"'>"From Engineering Solutions to Engineering Change."</p>
+                            <p class="text-xs mt-1 uppercase tracking-widest opacity-80" data-en="— Er. Aditya Acharya" data-ne="— इ. आदित्य आचार्य">— Er. Aditya Acharya</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flag-stripe-bottom"></div>
+
+    <!-- Education & Profession -->
+    <section id="about" class="py-24 bg-white relative">
+        <div class="party-pattern absolute inset-0"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <div class="aspect-square bg-blue-50 rounded-3xl overflow-hidden flex items-center justify-center relative shadow-inner border border-blue-100">
+                         <i class="fa-solid fa-microchip text-9xl text-blue-200/50"></i>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-blue-900 p-10 rounded-3xl text-white hidden lg:block shadow-2xl border-b-4 border-red-600">
+                        <span class="text-3xl font-black block" data-en="TU Alumnus" data-ne="त्रि.वि. स्नातक">TU Alumnus</span>
+                        <span class="text-xs uppercase tracking-widest text-red-400 font-bold" data-en="Thapathali Campus" data-ne="थापाथली क्याम्पस">Thapathali Campus</span>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <h2 class="text-4xl font-black text-blue-900 leading-tight">
+                        <span data-en="Education &" data-ne="शिक्षा र">Education &</span> 
+                        <span class="text-red-600" data-en="Profession" data-ne="पेशा">Profession</span>
+                    </h2>
+                    <p class="text-lg text-slate-600 leading-relaxed" 
+                       data-en="After completing his studies as an Automobile Engineer from the prestigious Tribhuwan University, Thapathali Engineering Campus, Er. Aditya Acharya chose a path less traveled." 
+                       data-ne="प्रतिष्ठित त्रिभुवन विश्वविद्यालय, थापाथली इन्जिनियरिङ क्याम्पसबाट अटोमोबाइल इन्जिनियरको रूपमा अध्ययन पूरा गरेपछि, इ. आदित्य आचार्यले एक फरक बाटो रोज्नुभयो।">
+                        After completing his studies as an Automobile Engineer from the prestigious Tribhuwan University, Thapathali Engineering Campus, Er. Aditya Acharya chose a path less traveled.
+                    </p>
+                    <p class="text-lg text-slate-600 leading-relaxed" 
+                       data-en="Driven by a strong commitment to his homeland, he chose not to pursue opportunities abroad. Instead, he decided to build solutions locally, applying his technical expertise to contribute directly to his community in Sunsari and Eastern Nepal." 
+                       data-ne="आफ्नो मातृप्रतिको कडा प्रतिबद्धताका कारण उहाँले विदेश जाने अवसर रोज्नुभएन। बरु, उहाँले स्थानीय स्तरमै समाधान निर्माण गर्ने निर्णय गर्नुभयो, आफ्नो प्राविधिक विशेषज्ञतालाई सुनसरी र पूर्वी नेपालको समुदायमा प्रत्यक्ष योगदान दिन प्रयोग गर्नुभयो।">
+                        Driven by a strong commitment to his homeland, he chose not to pursue opportunities abroad. Instead, he decided to build solutions locally, applying his technical expertise to contribute directly to his community in Sunsari and Eastern Nepal.
+                    </p>
+                    <div class="pt-4 grid grid-cols-2 gap-6">
+                        <div class="nepal-accent pl-4">
+                            <h4 class="font-bold text-blue-900" data-en="Automobile Engineer" data-ne="अटोमोबाइल इन्जिनियर">Automobile Engineer</h4>
+                            <p class="text-sm text-slate-500 italic" data-en="Thapathali Campus" data-ne="थापाथली क्याम्पस">Thapathali Campus</p>
+                        </div>
+                        <div class="nepal-accent pl-4" style="border-left-color: var(--party-blue)">
+                            <h4 class="font-bold text-blue-900" data-en="Local Visionary" data-ne="स्थानीय दूरदर्शी">Local Visionary</h4>
+                            <p class="text-sm text-slate-500 italic" data-en="Nepal-First Commitment" data-ne="नेपाल-प्रथम प्रतिबद्धता">Nepal-First Commitment</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contribution Section -->
+    <section id="contribution" class="py-24 bg-blue-950 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-red-600/5 skew-x-12"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-4xl font-black mb-4 uppercase tracking-tight">
+                    <span data-en="Work &" data-ne="कार्य र">Work &</span> 
+                    <span class="text-red-500" data-en="Contribution" data-ne="योगदान">Contribution</span>
+                </h2>
+                <div class="h-1.5 w-24 bg-red-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <div class="bg-white/5 backdrop-blur-md p-10 rounded-3xl border border-white/10 hover:border-red-500/50 transition duration-300">
+                    <div class="w-16 h-16 bg-red-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg">
+                        <i class="fa-solid fa-battery-three-quarters text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6" data-en="Clean Energy Impact" data-ne="स्वच्छ ऊर्जा प्रभाव">Clean Energy Impact</h3>
+                    <p class="text-slate-300 mb-8 leading-relaxed" 
+                       data-en="Supplying Lithium-ion batteries for e-rickshaws across Eastern Nepal, contributing to:" 
+                       data-ne="पूर्वी नेपालभर ई-रिक्शाका लागि लिथियम-आयन ब्याट्रीहरू आपूर्ति गर्दै, निम्न कुरामा योगदान पुर्‍याउँदै:">
+                        Supplying Lithium-ion batteries for e-rickshaws across Eastern Nepal, contributing to:
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-4 text-slate-200 font-medium">
+                            <i class="fa-solid fa-circle-check text-red-500"></i> 
+                            <span data-en="Local employment generation" data-ne="स्थानीय रोजगारी सिर्जना">Local employment generation</span>
+                        </li>
+                        <li class="flex items-center gap-4 text-slate-200 font-medium">
+                            <i class="fa-solid fa-circle-check text-red-500"></i> 
+                            <span data-en="Sustainable and affordable transportation" data-ne="दिगो र किफायती यातायात">Sustainable and affordable transportation</span>
+                        </li>
+                        <li class="flex items-center gap-4 text-slate-200 font-medium">
+                            <i class="fa-solid fa-circle-check text-red-500"></i> 
+                            <span data-en="Environmental protection & clean energy" data-ne="वातावरण संरक्षण र स्वच्छ ऊर्जा">Environmental protection & clean energy</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur-md p-10 rounded-3xl border border-white/10 hover:border-blue-400/50 transition duration-300">
+                    <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg">
+                        <i class="fa-solid fa-bolt text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6" data-en="Industrial Innovation" data-ne="औद्योगिक नवाचार">Industrial Innovation</h3>
+                    <p class="text-slate-300 mb-6 leading-relaxed" 
+                       data-en="Manufacturing electric bikes for Itahari Sub-Metropolitan City, demonstrating that practical, tech-driven solutions are possible through collaboration." 
+                       data-ne="इटहरी उप-महानगरपालिकाका लागि विद्युतीय बाइकहरू निर्माण गर्दै, सहकार्य मार्फत व्यावहारिक र प्रविधिमा आधारित समाधानहरू सम्भव छन् भन्ने प्रमाणित गर्दै।">
+                        Manufacturing electric bikes for Itahari Sub-Metropolitan City, demonstrating that practical, tech-driven solutions are possible through collaboration.
+                    </p>
+                    <div class="p-6 bg-white/5 rounded-2xl border-l-4 border-red-600 mt-4">
+                        <p class="italic text-lg" data-en='"Proving technology can serve the people through local government collaboration."' 
+                           data-ne='"स्थानीय सरकारसँगको सहकार्य मार्फत प्रविधिले जनताको सेवा गर्न सक्छ भन्ने प्रमाणित गर्दै।"'>
+                           "Proving technology can serve the people through local government collaboration."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Priorities Section -->
+    <section id="priorities" class="py-24 bg-white relative">
+        <div class="party-pattern absolute inset-0"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-4xl font-black mb-4 text-blue-900">
+                    <span data-en="Key Priorities for" data-ne="का लागि मुख्य प्राथमिकताहरू">Key Priorities for</span> 
+                    <span class="text-red-600" data-en="Sunsari Kshetra No. 2" data-ne="सुनसरी क्षेत्र नं. २">Sunsari Kshetra No. 2</span>
+                </h2>
+                <div class="h-1.5 w-24 bg-red-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 card-hover group">
+                    <i class="fa-solid fa-users-gear text-red-600 text-3xl mb-6"></i>
+                    <h3 class="text-xl font-extrabold mb-3 text-blue-950" data-en="Youth & Employment" data-ne="युवा र रोजगारी">Youth & Employment</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed" data-en="Skill training, entrepreneurship support, and local job creation." data-ne="सीपमूलक तालिम, उद्यमशीलता सहयोग र स्थानीय रोजगारी सिर्जना।">Skill training, entrepreneurship support, and local job creation.</p>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 card-hover group">
+                    <i class="fa-solid fa-book-open text-blue-700 text-3xl mb-6"></i>
+                    <h3 class="text-xl font-extrabold mb-3 text-blue-950" data-en="Education" data-ne="शिक्षा">Education</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed" data-en="Quality schools, digital learning, and affordable higher education." data-ne="गुणस्तरीय विद्यालय, डिजिटल शिक्षा र सुलभ उच्च शिक्षा।">Quality schools, digital learning, and affordable higher education.</p>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 card-hover group">
+                    <i class="fa-solid fa-heart-pulse text-red-600 text-3xl mb-6"></i>
+                    <h3 class="text-xl font-extrabold mb-3 text-blue-950" data-en="Healthcare" data-ne="स्वास्थ्य सेवा">Healthcare</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed" data-en="Accessible health services, local hospitals, and preventive care." data-ne="सुलभ स्वास्थ्य सेवा, स्थानीय अस्पताल र प्रतिकारात्मक स्वास्थ्य सेवा।">Accessible health services, local hospitals, and preventive care.</p>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 card-hover group">
+                    <i class="fa-solid fa-road text-blue-700 text-3xl mb-6"></i>
+                    <h3 class="text-xl font-extrabold mb-3 text-blue-950" data-en="Infrastructure" data-ne="पूर्वाधार">Infrastructure</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed" data-en="Roads, irrigation, drinking water, and electricity." data-ne="सडक, सिँचाइ, खानेपानी र विद्युत।">Roads, irrigation, drinking water, and electricity.</p>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 card-hover group">
+                    <i class="fa-solid fa-seedling text-red-600 text-3xl mb-6"></i>
+                    <h3 class="text-xl font-extrabold mb-3 text-blue-950" data-en="Agriculture" data-ne="कृषि">Agriculture</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed" data-en="Farmer support, fair pricing, and modern farming techniques." data-ne="किसान सहयोग, उचित मूल्य र आधुनिक खेती प्रविधि।">Farmer support, fair pricing, and modern farming techniques.</p>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 card-hover group">
+                    <i class="fa-solid fa-gavel text-blue-700 text-3xl mb-6"></i>
+                    <h3 class="text-xl font-extrabold mb-3 text-blue-950" data-en="Good Governance" data-ne="सुशासन">Good Governance</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed" data-en="Transparency, accountability, and citizen participation." data-ne="पारदर्शिता, जवाफदेहिता र नागरिक सहभागिता।">Transparency, accountability, and citizen participation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="py-24 bg-blue-950 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-black mb-10 leading-tight">
+                        <span data-en="Why Choose" data-ne="किन रोज्ने">Why Choose</span> <br>
+                        <span class="text-red-500" data-en="Er. Aditya Acharya?" data-ne="इ. आदित्य आचार्यलाई?">Er. Aditya Acharya?</span>
+                    </h2>
+                    <div class="space-y-8">
+                        <div class="flex gap-6 items-start">
+                            <div class="w-12 h-12 bg-red-600 rounded-2xl flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1" data-en="Clean image and people-first leadership" data-ne="स्वच्छ छवि र जनमुखी नेतृत्व">Clean image and people-first leadership</h4>
+                                <p class="text-slate-400 text-sm" data-en="A reputation built on integrity and engineering precision." data-ne="इमान्दारिता र इन्जिनियरिङ परिशुद्धतामा निर्मित प्रतिष्ठा।">A reputation built on integrity and engineering precision.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6 items-start">
+                            <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-handshake"></i></div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1" data-en="Strong grassroots connection" data-ne="बलियो तल्लो तहको सम्बन्ध">Strong grassroots connection</h4>
+                                <p class="text-slate-400 text-sm" data-en="Deeply rooted in the community with firsthand local understanding." data-ne="स्थानीय बुझाइका साथ समुदायमा गहिरो जरा गाडिएको।">Deeply rooted in the community with firsthand local understanding.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6 items-start">
+                            <div class="w-12 h-12 bg-red-600 rounded-2xl flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-bolt"></i></div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1" data-en="Youthful energy with clear vision" data-ne="स्पष्ट दृष्टिकोणका साथ युवा ऊर्जा">Youthful energy with clear vision</h4>
+                                <p class="text-slate-400 text-sm" data-en="Dynamic leadership focused on long-term sustainability." data-ne="दीर्घकालीन दिगोपनमा केन्द्रित गतिशील नेतृत्व।">Dynamic leadership focused on long-term sustainability.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-blue-900/90 backdrop-blur-xl p-12 rounded-3xl text-center border border-white/10 shadow-2xl">
+                        <h3 class="text-2xl font-black mb-8 uppercase tracking-widest text-red-500" data-en="A Message to Voters" data-ne="मतदाताहरूलाई सन्देश">A Message to Voters</h3>
+                        <p class="text-2xl leading-relaxed font-light italic text-blue-50 mb-8" 
+                           data-en="“I believe real change starts from the grassroots. Together, we can transform Sunsari Kshetra No. 2 into a model constituency.”" 
+                           data-ne="“मलाई विश्वास छ कि वास्तविक परिवर्तन तल्लो तहबाट सुरु हुन्छ। सँगै मिलेर हामी सुनसरी क्षेत्र नं. २ लाई नमुना निर्वाचन क्षेत्र बनाउन सक्छौं।”">
+                            “I believe real change starts from the grassroots. Together, we can transform Sunsari Kshetra No. 2 into a model constituency.”
+                        </p>
+                        <p class="font-bold text-xl" data-en="— Er. Aditya Acharya" data-ne="— इ. आदित्य आचार्य">— Er. Aditya Acharya</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Involved Section -->
+    <section id="volunteer" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-red-600"></div>
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-blue-900 skew-x-[30deg] origin-top translate-x-20"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white relative z-10">
+            <h2 class="text-4xl md:text-6xl font-black mb-6" data-en="Join the Movement" data-ne="अभियानमा जोडिनुहोस्">Join the Movement</h2>
+            <p class="text-white/80 text-xl mb-12 max-w-2xl mx-auto font-medium" 
+               data-en="Become a volunteer, supporter, or campaign partner. Every hand counts in building a better Sunsari." 
+               data-ne="स्वयंसेवक, समर्थक वा अभियान साझेदार बन्नुहोस्। राम्रो सुनसरी निर्माणमा हरेक हातको गणना हुन्छ।">Become a volunteer, supporter, or campaign partner. Every hand counts in building a better Sunsari.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <button class="bg-white

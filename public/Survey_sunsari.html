@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunsari Citizen Survey - Professional Print Version</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Mukta', sans-serif;
+            background-color: #f3f4f6;
+            -webkit-print-color-adjust: exact;
+        }
+
+        /* Essential for Print Layout */
+        @media print {
+            @page {
+                size: A4;
+                margin: 1.5cm;
+            }
+            body {
+                background-color: white !important;
+                margin: 0;
+                padding: 0;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .page-break {
+                break-before: page;
+                display: block;
+                height: 0;
+            }
+            .survey-section {
+                box-shadow: none !important;
+                border: 1px solid #e5e7eb !important;
+                border-top: 6px solid #b91c1c !important; /* Crimson Red for Print */
+                min-height: 26cm; /* Fills the A4 page height */
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 1.5cm !important;
+            }
+            .option-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 15px !important;
+            }
+        }
+
+        /* Screen Styling */
+        .survey-section {
+            background: white;
+            max-width: 21cm;
+            margin: 20px auto;
+            min-height: 29.7cm; /* A4 Height */
+            padding: 2.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 8px solid #dc2626;
+            position: relative;
+        }
+
+        .section-header {
+            border-bottom: 2px solid #f3f4f6;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .question-label {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            border: 1px solid #e2e8f0;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .input-line {
+            border-bottom: 1.5px dashed #94a3b8;
+            width: 100%;
+            height: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        .custom-box {
+            width: 1.2rem;
+            height: 1.2rem;
+            border: 2px solid #64748b;
+            margin-right: 12px;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body class="py-10">
+
+    <div class="no-print text-center mb-8">
+        <button onclick="window.print()" class="bg-red-600 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-red-700 transition">
+            प्रिन्ट गर्नुहोस् (Print Now)
+        </button>
+        <p class="text-sm text-gray-500 mt-2">प्रिन्ट गर्दा 'Background Graphics' अन गर्न नभुल्नुहोला ।</p>
+    </div>
+
+    <!-- PAGE 1: HEADER & SECTION A -->
+    <div class="survey-section">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-black text-red-600 mb-2">नागरिक आवाज सर्वे – सुनसरी जिल्ला</h1>
+            <p class="text-xl text-gray-600 font-medium">(समस्या → कारण → समाधान पत्ता लगाउने उद्देश्यले)</p>
+            <div class="h-1 w-32 bg-red-600 mx-auto mt-4"></div>
+        </div>
+
+        <div class="bg-gray-50 p-6 rounded-2xl mb-12 border border-gray-100">
+            <h3 class="text-xl font-bold mb-2">नमस्ते 🙏</h3>
+            <p class="text-gray-700 leading-relaxed">
+                हामी सुनसरी जिल्लाका नागरिकहरूले भोगिरहेका दैनिक तथा दीर्घकालीन समस्या, तिनका वास्तविक कारण र सम्भावित समाधानहरू बुझ्न यो सर्वे गरिरहेका छौं। तपाईंको उत्तरले भविष्यको नीति, योजना र विकासको दिशा तय गर्न सहयोग गर्नेछ।
+            </p>
+        </div>
+
+        <div class="section-header">
+            <h2 class="text-2xl font-black text-blue-900">खण्ड A: आधारभूत जानकारी</h2>
+        </div>
+
+        <div class="space-y-12">
+            <div>
+                <label class="question-label">१. वडा / टोल / क्षेत्रः</label>
+                <div class="input-line"></div>
+            </div>
+
+            <div>
+                <label class="question-label">२. उमेर समूहः</label>
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="checkbox-item"><div class="custom-box"></div> १८ वर्ष मुनि</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> १८–२५</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> २६–४०</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> ४१–६०</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> ६० भन्दा माथि</div>
+                </div>
+            </div>
+
+            <div>
+                <label class="question-label">३. मुख्य पेशा / जीविकोपार्जनः</label>
+                <div class="input-line"></div>
+                <p class="text-xs text-gray-400 mt-2 italic">(उदाहरण: कृषि, व्यापार, शिक्षण, वैदेशिक रोजगार आदि)</p>
+            </div>
+        </div>
+
+        <div class="mt-auto pt-10 text-center text-gray-300 text-xs border-t">
+            नागरिक आवाज सर्वे | सुनसरी | पृष्ठ १
+        </div>
+    </div>
+
+    <!-- PAGE 2: SECTION B -->
+    <div class="survey-section page-break">
+        <div class="section-header">
+            <h2 class="text-2xl font-black text-blue-900">खण्ड B: दैनिक जीवनका समस्या</h2>
+        </div>
+
+        <div class="space-y-10">
+            <div>
+                <label class="question-label">४. तपाईंको दैनिक जीवनमा सबैभन्दा बढी असर पार्ने समस्या कुन–कुन हुन्? (एकभन्दा बढी छान्न सकिने)</label>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="checkbox-item"><div class="custom-box"></div> सडक तथा यातायात</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> खानेपानी</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> विद्युत</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> स्वास्थ्य सेवा</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> शिक्षा</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> रोजगारी / आम्दानी</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> महँगी / जीवन खर्च</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> वातावरण / प्रदूषण</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> सरकारी सेवामा ढिलाइ</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> अन्य: __________</div>
+                </div>
+            </div>
+
+            <div>
+                <label class="question-label">५. माथि छान्नुभएको मध्ये सबैभन्दा गम्भीर समस्या कुन हो? (एउटा मात्र)</label>
+                <div class="input-line"></div>
+            </div>
+
+            <div>
+                <label class="question-label">६. यो समस्या कति समयदेखि भइरहेको छ?</label>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="checkbox-item"><div class="custom-box"></div> १ वर्षभन्दा कम</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> १–३ वर्ष</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> ३–५ वर्ष</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> ५ वर्षभन्दा बढी</div>
+                </div>
+            </div>
+
+            <div>
+                <label class="question-label">७. यो समस्याले तपाईंको जीवनमा सबैभन्दा ठूलो असर केमा परेको छ?</label>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="checkbox-item text-sm"><div class="custom-box"></div> आम्दानी</div>
+                    <div class="checkbox-item text-sm"><div class="custom-box"></div> स्वास्थ्य</div>
+                    <div class="checkbox-item text-sm"><div class="custom-box"></div> शिक्षा</div>
+                    <div class="checkbox-item text-sm"><div class="custom-box"></div> समय र अवसर</div>
+                    <div class="checkbox-item text-sm"><div class="custom-box"></div> मानसिक तनाव</div>
+                    <div class="checkbox-item text-sm"><div class="custom-box"></div> अन्य</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-auto pt-10 text-center text-gray-300 text-xs border-t">
+            नागरिक आवाज सर्वे | सुनसरी | पृष्ठ २
+        </div>
+    </div>
+
+    <!-- PAGE 3: SECTION C -->
+    <div class="survey-section page-break">
+        <div class="section-header">
+            <h2 class="text-2xl font-black text-blue-900">खण्ड C: समस्याको जड (Root Cause)</h2>
+        </div>
+
+        <div class="space-y-10">
+            <div>
+                <label class="question-label">८. तपाईंको विचारमा यो समस्या मुख्यतः किन समाधान हुन सकेको छैन?</label>
+                <div class="space-y-4">
+                    <div class="checkbox-item"><div class="custom-box"></div> योजना भए पनि कार्यान्वयन नहुनु</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> बजेट सही ठाउँमा नपुग्नु / दुरुपयोग हुनु</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> प्राविधिक ज्ञान वा दक्षताको अभाव</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> राजनीतिक इच्छाशक्ति वा सक्रियताको कमी</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> भ्रष्टाचार वा गलत नियत</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> स्थानीय र केन्द्रबीच समन्वय नहुनु</div>
+                </div>
+            </div>
+
+            <div>
+                <label class="question-label">९. यो समस्या समाधान गर्ने प्रमुख जिम्मेवारी कसको देख्नुहुन्छ?</label>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="checkbox-item"><div class="custom-box"></div> स्थानीय सरकार</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> प्रदेश सरकार</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> केन्द्र सरकार</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> जनप्रतिनिधि स्वयं</div>
+                </div>
+            </div>
+
+            <div>
+                <label class="question-label">१०. अघिल्ला जनप्रतिनिधिले यसलाई कत्तिको प्राथमिकता दिए जस्तो लाग्छ?</label>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="checkbox-item"><div class="custom-box"></div> धेरै प्राथमिकता दिए</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> सामान्य रूपमा लिए</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> खासै चासो दिएनन्</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> थाहा छैन</div>
+                </div>
+            </div>
+
+            <div>
+                <label class="question-label">११. समस्या समाधानमा सबैभन्दा ठूलो अवरोध के हो?</label>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="checkbox-item text-sm"><div class="custom-box"></div> राजनीति</div>
+                    <div class="checkbox-item text-sm"><div class="custom-box"></div> बजेट</div>
+                    <div class="checkbox-item text-sm"><div class="custom-box"></div> प्राविधिक</div>
+                    <div class="checkbox-item text-sm"><div class="custom-box"></div> समन्वय</div>
+                    <div class="checkbox-item text-sm"><div class="custom-box"></div> इच्छाशक्ति</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-auto pt-10 text-center text-gray-300 text-xs border-t">
+            नागरिक आवाज सर्वे | सुनसरी | पृष्ठ ३
+        </div>
+    </div>
+
+    <!-- PAGE 4: SECTION D -->
+    <div class="survey-section page-break">
+        <div class="section-header">
+            <h2 class="text-2xl font-black text-blue-900">खण्ड D: भविष्य र समाधान</h2>
+        </div>
+
+        <div class="space-y-12">
+            <div>
+                <label class="question-label">१३. आगामी ५–१० वर्षमा सुनसरीको सबैभन्दा ठूलो चुनौती के हुन सक्छ?</label>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="checkbox-item"><div class="custom-box"></div> बेरोजगारी</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> युवा पलायन</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> उद्योगको अभाव</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> कृषि संकट</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> वातावरणीय क्षति</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> शिक्षा र स्वास्थ्य पहुँच</div>
+                </div>
+            </div>
+
+            <div>
+                <label class="question-label">१४. सरकार/जनप्रतिनिधिले पहिलो प्राथमिकतामा के गर्नुपर्छ? (तपाईंको सुझाव)</label>
+                <div class="h-24 border border-gray-200 rounded-xl p-4 bg-gray-50"></div>
+            </div>
+
+            <div>
+                <label class="question-label">१५. रोजगारी सिर्जना गर्न कुन उपाय प्रभावकारी होला?</label>
+                <div class="space-y-4">
+                    <div class="checkbox-item"><div class="custom-box"></div> सीपमूलक तालिम र बजारको व्यवस्था</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> स्थानीय स्रोत साधनमा आधारित उद्योग</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> कृषि आधुनिकीकरण र शीतभण्डार</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> प्रविधि र साना व्यवसाय सहयोग</div>
+                </div>
+            </div>
+
+            <div>
+                <label class="question-label">१६. विकास योजनामा जनताको सहभागिता कत्तिको आवश्यक छ?</label>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="checkbox-item"><div class="custom-box"></div> अत्यन्त आवश्यक</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> केही हदसम्म आवश्यक</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> खासै आवश्यक छैन</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-auto pt-10 text-center text-gray-300 text-xs border-t">
+            नागरिक आवाज सर्वे | सुनसरी | पृष्ठ ४
+        </div>
+    </div>
+
+    <!-- PAGE 5: SECTION E -->
+    <div class="survey-section page-break">
+        <div class="section-header">
+            <h2 class="text-2xl font-black text-blue-900">खण्ड E: नेतृत्व र विश्वास</h2>
+        </div>
+
+        <div class="space-y-10">
+            <div>
+                <label class="question-label">१७. हालको राजनीतिको मुख्य कमजोरी के हो जस्तो लाग्छ?</label>
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="checkbox-item"><div class="custom-box"></div> जनताको समस्याभन्दा सत्ता र शक्तिको होड</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> भ्रष्टाचार र अपारदर्शिता</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> चुनावका बेला दिइएका आश्वासन पुरा नहुनु</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> दक्ष र योग्य व्यक्तिको कमी</div>
+                </div>
+            </div>
+
+            <div>
+                <label class="question-label">१८. तपाईंको भावी प्रतिनिधिमा हुनैपर्ने मुख्य गुण के हो?</label>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="checkbox-item"><div class="custom-box"></div> इमानदार र नैतिकवान्</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> शिक्षित र अनुभवी</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> युवा र सक्रिय</div>
+                    <div class="checkbox-item"><div class="custom-box"></div> विकास प्रेमी</div>
+                </div>
+            </div>
+
+            <div>
+                <label class="question-label">१९. तपाईं नयाँ नेतृत्व र नयाँ सोचलाई अवसर दिन तयार हुनुहुन्छ?</label>
+                <div class="flex space-x-12 mt-4">
+                    <div class="flex items-center"><div class="custom-box"></div> एकदम तयार</div>
+                    <div class="flex items-center"><div class="custom-box"></div> सोच्न सकिन्छ</div>
+                    <div class="flex items-center"><div class="custom-box"></div> अहिल्यै भन्न सकिन्न</div>
+                </div>
+            </div>
+
+            <div class="mt-12 p-10 border-4 border-red-600 rounded-3xl bg-red-50">
+                <label class="text-2xl font-black text-red-700 block mb-4">२०. अन्तिम सन्देशः</label>
+                <p class="text-gray-600 mb-6 italic">"यदि तपाईं आफ्नो भविष्यको प्रतिनिधिलाई सिधै एउटा कुरा भन्न पाउनुभयो भने, त्यो के हुन्थ्यो?"</p>
+                <div class="h-48 border-b-2 border-red-200"></div>
+                <div class="h-48 border-b-2 border-red-200"></div>
+            </div>
+        </div>
+
+        <div class="mt-auto pt-10 text-center">
+            <p class="text-gray-400 font-bold">तपाईंको अमूल्य समय र विचारका लागि धन्यवाद ।</p>
+            <div class="text-gray-300 text-xs mt-2 border-t pt-4">नागरिक आवाज सर्वे | सुनसरी | पृष्ठ ५</div>
+        </div>
+    </div>
+
+</body>
+</html>
