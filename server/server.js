@@ -12,22 +12,37 @@ const volunteerRoutes = require('./routes/volunteer');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Connect to MongoDB
-const connectDB = async () => {
-  try {
-    const conn = await mongoose.connect(process.env.MONGO_URI);
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
-  } catch (error) {
-    console.error(`Error: ${error.message}`);
-    console.log('Continuing without database connection...');
-    // process.exit(1); // Keep server running for static files
-  }
-};
-
-// Connect to Database
-if (process.env.NODE_ENV !== 'test') {
-  connectDB();
+// Connect to MongoDB (Serverless-friendly)
+let cached = global.mongoose;
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
 }
+
+const connectDB = async () => {
+  if (cached.conn) {
+    return cached.conn;
+  }
+
+  if (!cached.promise) {
+    const opts = {
+      bufferCommands: false,
+    };
+
+    cached.promise = mongoose.connect(process.env.MONGO_URI, opts).then((mongoose) => {
+      return mongoose;
+    });
+  }
+
+  try {
+    cached.conn = await cached.promise;
+    console.log(`MongoDB Connected: ${cached.conn.connection.host}`);
+  } catch (e) {
+    cached.promise = null;
+    throw e;
+  }
+
+  return cached.conn;
+};
 
 // Middleware
 app.use(express.json()); // Body parser
@@ -41,6 +56,19 @@ app.use(morgan('dev')); // Logging
 // Serve static files
 app.use(express.static(path.join(__dirname, '../public')));
 
+// Connect to DB before handling requests
+app.use(async (req, res, next) => {
+  if (req.path.startsWith('/api')) {
+    try {
+      await connectDB();
+    } catch (error) {
+      console.error('Database Connection Error:', error);
+      // Don't crash, let the route handle it or fail gracefully
+    }
+  }
+  next();
+});
+
 // Routes
 app.use('/api', volunteerRoutes);
 
@@ -53,7 +81,11 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Start Server
-app.listen(PORT, () => {
-  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
-});
+// Start Server (Only if not in serverless environment)
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+  });
+}
+
+module.exports = app;
