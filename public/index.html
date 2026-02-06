@@ -29,6 +29,27 @@
             font-family: 'Noto Serif Devanagari', serif;
         }
 
+        /* Mobile Typography Fixes for Manifesto */
+        @media (max-width: 768px) {
+            #manifesto h3, #manifesto h4 {
+                text-align: left !important;
+                word-wrap: break-word;
+                hyphens: auto;
+            }
+            #manifesto p {
+                text-align: left !important;
+                text-justify: none !important;
+            }
+            /* Reduce massive headings on mobile */
+            html[lang="en"] #manifesto h3, html[lang="ne"] #manifesto h3 {
+                font-size: 1.75rem !important; /* was 3xl (2.25rem) or larger */
+                line-height: 1.3;
+            }
+            html[lang="en"] #manifesto h4, html[lang="ne"] #manifesto h4 {
+                font-size: 1.1rem !important;
+            }
+        }
+
         .hero-gradient {
             background: linear-gradient(135deg, rgba(23, 37, 84, 0.95) 0%, rgba(185, 28, 28, 0.9) 100%), 
                         url('hero-bg.jpg');
@@ -199,24 +220,24 @@
     <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-md border-b-2 border-blue-900 print:hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center gap-2 md:gap-4 relative">
-                    <!-- Logo Circle: Smaller on mobile (h-16 w-16), larger on md+ (h-24 w-24) -->
-                    <div class="absolute top-1/2 -translate-y-1/2 left-0 bg-white rounded-full p-1.5 md:p-2 shadow-lg border-2 border-blue-900 z-50 h-16 w-16 md:h-24 md:w-24 flex items-center justify-center -ml-1 md:-ml-2">
-                        <img src="2.jpeg" alt="Party Logo" onerror="this.src='https://via.placeholder.com/50x50?text=Logo'" class="h-12 w-12 md:h-20 md:w-20 object-contain">
+                <div class="flex items-center gap-1 md:gap-4 relative">
+                    <!-- Logo Circle: Smaller on mobile (h-14 w-14), larger on md+ (h-24 w-24) -->
+                    <div class="absolute top-1/2 -translate-y-1/2 left-0 bg-white rounded-full p-1 md:p-2 shadow-lg border-2 border-blue-900 z-50 h-14 w-14 md:h-24 md:w-24 flex items-center justify-center -ml-1 md:-ml-2">
+                        <img src="2.jpeg" alt="Party Logo" onerror="this.src='https://via.placeholder.com/50x50?text=Logo'" class="h-10 w-10 md:h-20 md:w-20 object-contain">
                     </div>
                     
-                    <!-- Text: Adjusted margins (ml-16 mobile, ml-24 md+) and font sizes -->
-                    <div class="flex flex-col ml-16 md:ml-24">
-                        <span class="text-base sm:text-lg md:text-2xl font-black text-blue-900 tracking-tight leading-none italic uppercase whitespace-nowrap">ER. ADITYA ACHARYA</span>
+                    <!-- Text: Adjusted margins (ml-14 mobile, ml-24 md+) and font sizes -->
+                    <div class="flex flex-col ml-14 md:ml-24">
+                        <span class="text-sm sm:text-lg md:text-2xl font-black text-blue-900 tracking-tight leading-none italic uppercase whitespace-nowrap">ER. ADITYA ACHARYA</span>
                         <div class="flex items-center mt-0.5 md:mt-1">
-                            <span class="h-1.5 w-1.5 md:h-2 md:w-2 bg-red-600 rounded-full mr-1.5 md:mr-2"></span>
-                            <span class="text-[10px] sm:text-xs font-bold text-red-600 uppercase tracking-widest leading-tight" lang-content="en">Rastria Nirman Dal Nepal</span>
-                            <span class="text-[10px] sm:text-xs font-bold text-red-600 uppercase tracking-widest leading-tight" lang-content="ne">राष्ट्रिय निर्माण दल नेपाल</span>
+                            <span class="h-1.5 w-1.5 md:h-2 md:w-2 bg-red-600 rounded-full mr-1 md:mr-2"></span>
+                            <span class="text-[9px] sm:text-xs font-bold text-red-600 uppercase tracking-widest leading-tight" lang-content="en">Rastria Nirman Dal Nepal</span>
+                            <span class="text-[9px] sm:text-xs font-bold text-red-600 uppercase tracking-widest leading-tight" lang-content="ne">राष्ट्रिय निर्माण दल नेपाल</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="flex items-center gap-2 md:gap-6">
+                <div class="flex items-center gap-1 md:gap-6">
                     <div class="hidden lg:flex space-x-6 text-sm font-bold uppercase tracking-wide items-center">
                         <a href="#about" class="text-blue-900 hover:text-red-600 transition" lang-content="en">About</a>
                         <a href="#about" class="text-blue-900 hover:text-red-600 transition" lang-content="ne">परिचय</a>
