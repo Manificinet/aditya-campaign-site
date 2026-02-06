@@ -278,11 +278,11 @@
                     <span lang-content="ne">सुनसरी क्षेत्र नं. २</span>
                 </div>
                 
-                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight" lang-content="en">
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight" lang-content="en">
                     Voice of the People. <br>
                     <span class="text-red-500">Commitment to Development.</span>
                 </h1>
-                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight" lang-content="ne">
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight" lang-content="ne">
                     जनताको आवाज। <br>
                     <span class="text-red-500">विकासको प्रतिबद्धता।</span>
                 </h1>
@@ -351,8 +351,8 @@
                     </div>
                 </div>
                 <div class="space-y-6">
-                    <h2 class="text-4xl font-black text-blue-900 leading-tight" lang-content="en">Education & <span class="text-red-600">Profession</span></h2>
-                    <h2 class="text-4xl font-black text-blue-900 leading-tight" lang-content="ne">शिक्षा र <span class="text-red-600">पेशा</span></h2>
+                    <h2 class="text-3xl sm:text-4xl font-black text-blue-900 leading-tight" lang-content="en">Education & <span class="text-red-600">Profession</span></h2>
+                    <h2 class="text-3xl sm:text-4xl font-black text-blue-900 leading-tight" lang-content="ne">शिक्षा र <span class="text-red-600">पेशा</span></h2>
                     
                     <div lang-content="en">
                         <p class="text-lg text-slate-600 leading-relaxed mb-4">
@@ -391,8 +391,8 @@
         <div class="absolute top-0 right-0 w-1/3 h-full bg-red-600/5 skew-x-12"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-4xl font-black mb-4 uppercase tracking-tight" lang-content="en">Work & <span class="text-red-500">Contribution</span></h2>
-                <h2 class="text-4xl font-black mb-4 uppercase tracking-tight" lang-content="ne">कार्य र <span class="text-red-500">योगदान</span></h2>
+                <h2 class="text-3xl sm:text-4xl font-black mb-4 uppercase tracking-tight" lang-content="en">Work & <span class="text-red-500">Contribution</span></h2>
+                <h2 class="text-3xl sm:text-4xl font-black mb-4 uppercase tracking-tight" lang-content="ne">कार्य र <span class="text-red-500">योगदान</span></h2>
                 <div class="h-1.5 w-24 bg-red-600 mx-auto rounded-full"></div>
             </div>
 
@@ -1432,26 +1432,48 @@
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <!-- Floating QR Code Widget (Bottom Left) -->
-    <div id="floating-qr" 
-         onclick="this.classList.toggle('scale-[2]'); this.classList.toggle('animate-none'); this.classList.toggle('z-[100]');" 
-         class="fixed bottom-8 left-8 z-40 bg-white p-4 rounded-2xl shadow-2xl border border-slate-200 flex items-center gap-6 animate-bounce-subtle print:hidden cursor-pointer origin-bottom-left hover:scale-150 hover:z-[100] hover:animate-none transition-transform duration-300">
-        <div class="bg-blue-50 p-2 rounded-xl">
-            <img src="qr.png" 
-                 onerror="this.onerror=null; this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=JoinChannel';" 
-                 alt="Join Channel QR" 
-                 class="w-32 h-32 object-contain mix-blend-multiply">
+    <!-- Floating QR Code Widget (Bottom Left) - Optimized for Mobile -->
+    <div class="fixed bottom-5 left-5 z-40 flex flex-col items-start gap-4 print:hidden">
+        
+        <!-- Expanded QR Card (Hidden by default) -->
+        <div id="qr-popup" class="bg-white p-5 rounded-2xl shadow-2xl border border-slate-200 hidden transform transition-all duration-300 origin-bottom-left animate-in fade-in slide-in-from-bottom-4 mb-2">
+            <button onclick="toggleQrWidget()" class="absolute top-2 right-2 text-slate-400 hover:text-red-500 w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-50 transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="flex items-center gap-4">
+                <div class="bg-blue-50 p-2 rounded-xl">
+                    <img src="qr.png" 
+                         onerror="this.onerror=null; this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=JoinChannel';" 
+                         alt="Join Channel QR" 
+                         class="w-24 h-24 object-contain mix-blend-multiply">
+                </div>
+                <div>
+                    <p class="text-[10px] font-bold text-red-500 uppercase tracking-widest mb-1" lang-content="en">Scan to Connect</p>
+                    <p class="text-[10px] font-bold text-red-500 uppercase tracking-widest mb-1" lang-content="ne">स्क्यान गर्नुहोस्</p>
+                    
+                    <p class="text-lg font-black text-blue-900 leading-tight" lang-content="en">Join Channel</p>
+                    <p class="text-lg font-black text-blue-900 leading-tight" lang-content="ne">च्यानलमा जोडिनुहोस्</p>
+                </div>
+            </div>
         </div>
-        <div class="pr-2">
-            <p class="text-xs font-bold text-red-500 uppercase tracking-widest mb-1" lang-content="en">Scan to Connect</p>
-            <p class="text-xs font-bold text-red-500 uppercase tracking-widest mb-1" lang-content="ne">स्क्यान गर्नुहोस्</p>
-            
-            <p class="text-xl font-black text-blue-900 leading-tight" lang-content="en">Join the Channel</p>
-            <p class="text-xl font-black text-blue-900 leading-tight" lang-content="ne">च्यानलमा जोडिनुहोस्</p>
-        </div>
+
+        <!-- Toggle Button (Always Visible) -->
+        <button onclick="toggleQrWidget()" 
+                class="bg-blue-900 hover:bg-red-600 text-white w-14 h-14 rounded-full shadow-lg shadow-blue-900/30 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group">
+            <i class="fa-solid fa-qrcode text-xl group-hover:rotate-180 transition-transform duration-500"></i>
+        </button>
     </div>
 
     <script>
+        function toggleQrWidget() {
+            const popup = document.getElementById('qr-popup');
+            if (popup.classList.contains('hidden')) {
+                popup.classList.remove('hidden');
+            } else {
+                popup.classList.add('hidden');
+            }
+        }
+
         // Language Toggle Logic
         function toggleLanguage() {
             const body = document.body;
