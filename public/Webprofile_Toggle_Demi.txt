@@ -98,8 +98,8 @@
                         <div class="flex items-center mt-1">
                             <span class="h-2 w-2 bg-red-600 rounded-full mr-2"></span>
                             <span class="text-xs font-bold text-red-600 uppercase tracking-widest" 
-                                  data-en="Rastria Nirmand Daal Nepal" 
-                                  data-ne="राष्ट्रिय निर्माण दल नेपाल">Rastria Nirmand Daal Nepal</span>
+                                  data-en="Rastra Nirman Dal Nepal" 
+                                  data-ne="राष्ट्र निर्माण दल नेपाल">Rastra Nirman Dal Nepal</span>
                         </div>
                     </div>
                 </div>
