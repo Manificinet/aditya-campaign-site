@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const xss = require('xss-clean');
 const morgan = require('morgan');
 const path = require('path');
+const compression = require('compression');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const volunteerRoutes = require('./routes/volunteer');
@@ -46,6 +47,7 @@ const connectDB = async () => {
 };
 
 // Middleware
+app.use(compression()); // Compress all responses
 app.use(express.json()); // Body parser
 app.use(cors()); // Enable CORS
 app.use(helmet({
@@ -54,8 +56,11 @@ app.use(helmet({
 app.use(xss()); // Prevent XSS attacks
 app.use(morgan('dev')); // Logging
 
-// Serve static files
-app.use(express.static(path.join(__dirname, '../public')));
+// Serve static files with caching
+app.use(express.static(path.join(__dirname, '../public'), {
+  maxAge: '1d',
+  etag: true
+}));
 
 // Connect to DB before handling requests
 app.use(async (req, res, next) => {

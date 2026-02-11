@@ -586,7 +586,7 @@
 
                 <!-- Enlarged Symbol Section -->
                 <div class="mt-8 flex flex-col items-center justify-center gap-3">
-                    <img src="2.jpeg" alt="Water Bottle Symbol" onerror="this.onerror=null; this.src='https://placehold.co/128x128/e2e8f0/1e3a8a?text=Symbol\n(2.jpeg)';" class="h-32 w-32 object-contain bg-white rounded-full border-4 border-blue-900 p-2 shadow-xl hover:scale-110 transition-transform duration-300">
+                    <img src="2.jpeg" alt="Water Bottle Symbol" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/128x128/e2e8f0/1e3a8a?text=Symbol\n(2.jpeg)';" class="h-32 w-32 object-contain bg-white rounded-full border-4 border-blue-900 p-2 shadow-xl hover:scale-110 transition-transform duration-300">
                     <span class="font-black text-red-600 text-2xl uppercase tracking-wider bg-white px-4 py-1 rounded-full shadow-md border border-red-100" lang-content="ne">चुनाव चिह्न: पानीको बोतल</span>
                     <span class="font-black text-red-600 text-2xl uppercase tracking-wider bg-white px-4 py-1 rounded-full shadow-md border border-red-100" lang-content="en">Election Symbol: Water Bottle</span>
                 </div>
@@ -594,7 +594,7 @@
 
             <!-- Infographic Placeholder -->
             <div class="mb-16 rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
-                <img src="E-C-A.png" alt="Structural Reform Infographic" onerror="this.onerror=null; this.src='https://placehold.co/800x600/e2e8f0/1e3a8a?text=Infographic\n(E-C-A.png)';" class="w-full h-auto">
+                <img src="E-C-A.png" alt="Structural Reform Infographic" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/800x600/e2e8f0/1e3a8a?text=Infographic\n(E-C-A.png)';" class="w-full h-auto">
             </div>
 
             <!-- MANIFESTO CONTENT BLOCKS -->
@@ -1270,7 +1270,7 @@
                     "For these and such structural reforms, I have filed candidacy from Sunsari Constituency No. 2 for the House of Representatives. My election symbol is the water bottle. The above measures change the entire structural system from education to the labor market to the justice system. My final goal is not to stop going abroad for employment but to make it a choice for opportunity rather than a compulsion. Will Nepal make its greatest asset—its human capital—merely a means to send abroad and count remittance, or build a broad and dignified system to use the skills, experience, and capital earned abroad in nation-building? This choice will determine the path of Nepal's coming decade."
                 </p>
                 <div class="flex flex-col items-center justify-center gap-2">
-                    <img src="2.jpeg" class="w-20 h-20 bg-white rounded-full p-2 object-contain">
+                    <img src="2.jpeg" loading="lazy" class="w-20 h-20 bg-white rounded-full p-2 object-contain">
                     <span class="text-2xl font-bold">Aditya Acharya</span>
                     <span class="text-red-400 font-bold uppercase text-sm tracking-widest" lang-content="ne">सुनसरी क्षेत्र नं. २</span>
                     <span class="text-red-400 font-bold uppercase text-sm tracking-widest" lang-content="en">Sunsari Constituency No. 2</span>
@@ -1431,7 +1431,7 @@
                     </div>
                     
                     <div class="mt-8 bg-white p-3 rounded-xl inline-block shadow-lg hover:scale-105 transition-transform duration-300">
-                        <img src="qr.png" alt="Join Channel QR" class="w-48 h-48 object-contain">
+                        <img src="qr.png" alt="Join Channel QR" loading="lazy" class="w-48 h-48 object-contain">
                         <p class="text-xs text-blue-900 font-bold uppercase tracking-widest mt-2 text-center" lang-content="en">Scan to Join</p>
                         <p class="text-xs text-blue-900 font-bold uppercase tracking-widest mt-2 text-center" lang-content="ne">स्क्यान गर्नुहोस्</p>
                     </div>
@@ -1607,17 +1607,31 @@
                 const data = await response.json();
                 
                 if (data.success) {
-                    alert(isNepali ? 'धन्यवाद! तपाईंको विवरण सफलतापूर्वक प्राप्त भयो।' : data.message);
-                    document.getElementById('volunteerForm').reset();
+                    // Show success state on button immediately
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i> ' + (isNepali ? 'सफल भयो!' : 'Success!');
+                    btn.classList.remove('bg-blue-900');
+                    btn.classList.add('bg-green-600');
+                    
+                    setTimeout(() => {
+                        alert(isNepali ? 'धन्यवाद! तपाईंको विवरण सफलतापूर्वक प्राप्त भयो।' : data.message);
+                        document.getElementById('volunteerForm').reset();
+                        btn.classList.remove('bg-green-600');
+                        btn.classList.add('bg-blue-900');
+                        btn.innerHTML = originalContent;
+                        btn.disabled = false;
+                    }, 500);
                 } else {
                     alert(data.message || (isNepali ? 'त्रुटि भयो। कृपया पुन: प्रयास गर्नुहोस्।' : 'An error occurred. Please try again.'));
+                    btn.disabled = false;
+                    btn.innerHTML = originalContent;
                 }
             } catch (error) {
                 console.error('Error:', error);
                 alert(isNepali ? 'सर्भरमा समस्या आयो। कृपया केही समय पछि प्रयास गर्नुहोस्।' : 'Server error. Please try again later.');
-            } finally {
                 btn.disabled = false;
                 btn.innerHTML = originalContent;
+            } finally {
+                // Moved into logic blocks for better control
             }
         }
     </script>
